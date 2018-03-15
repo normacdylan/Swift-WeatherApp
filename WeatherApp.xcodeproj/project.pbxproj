@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		0F0112282049809700235641 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0112272049809700235641 /* AppDelegate.swift */; };
-		0F01122A2049809700235641 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0112292049809700235641 /* ViewController.swift */; };
 		0F01122D2049809700235641 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F01122B2049809700235641 /* Main.storyboard */; };
 		0F01122F2049809700235641 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F01122E2049809700235641 /* Assets.xcassets */; };
 		0F0112322049809700235641 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F0112302049809700235641 /* LaunchScreen.storyboard */; };
 		0F01123D2049809700235641 /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F01123C2049809700235641 /* WeatherAppTests.swift */; };
 		0F0112482049809700235641 /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0112472049809700235641 /* WeatherAppUITests.swift */; };
+		0F0112582049850300235641 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0112572049850300235641 /* ListController.swift */; };
+		0F01129420568A9400235641 /* WeatherGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F01129320568A9400235641 /* WeatherGetter.swift */; };
+		0F011298205AA94000235641 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F011297205AA94000235641 /* CustomCell.swift */; };
+		0F01129A205AACDE00235641 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F011299205AACDE00235641 /* SearchController.swift */; };
+		0F01129C205AAFD000235641 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F01129B205AAFD000235641 /* DBHelper.swift */; };
+		0F01129E205AC82800235641 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F01129D205AC82800235641 /* DetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +41,6 @@
 /* Begin PBXFileReference section */
 		0F0112242049809700235641 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F0112272049809700235641 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0F0112292049809700235641 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0F01122C2049809700235641 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F01122E2049809700235641 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F0112312049809700235641 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +51,12 @@
 		0F0112432049809700235641 /* WeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F0112472049809700235641 /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		0F0112492049809700235641 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F0112572049850300235641 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
+		0F01129320568A9400235641 /* WeatherGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherGetter.swift; sourceTree = "<group>"; };
+		0F011297205AA94000235641 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		0F011299205AACDE00235641 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		0F01129B205AAFD000235641 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		0F01129D205AC82800235641 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +108,16 @@
 			isa = PBXGroup;
 			children = (
 				0F0112272049809700235641 /* AppDelegate.swift */,
-				0F0112292049809700235641 /* ViewController.swift */,
 				0F01122B2049809700235641 /* Main.storyboard */,
 				0F01122E2049809700235641 /* Assets.xcassets */,
 				0F0112302049809700235641 /* LaunchScreen.storyboard */,
 				0F0112332049809700235641 /* Info.plist */,
+				0F0112572049850300235641 /* ListController.swift */,
+				0F01129320568A9400235641 /* WeatherGetter.swift */,
+				0F011297205AA94000235641 /* CustomCell.swift */,
+				0F011299205AACDE00235641 /* SearchController.swift */,
+				0F01129B205AAFD000235641 /* DBHelper.swift */,
+				0F01129D205AC82800235641 /* DetailController.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -259,8 +274,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F01122A2049809700235641 /* ViewController.swift in Sources */,
+				0F01129A205AACDE00235641 /* SearchController.swift in Sources */,
+				0F01129E205AC82800235641 /* DetailController.swift in Sources */,
+				0F01129420568A9400235641 /* WeatherGetter.swift in Sources */,
+				0F01129C205AAFD000235641 /* DBHelper.swift in Sources */,
+				0F011298205AA94000235641 /* CustomCell.swift in Sources */,
 				0F0112282049809700235641 /* AppDelegate.swift in Sources */,
+				0F0112582049850300235641 /* ListController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

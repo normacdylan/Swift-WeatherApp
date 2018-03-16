@@ -11,7 +11,7 @@ import UIKit
 class DetailController: UIViewController {
     
     @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var favoriteSwitch: UISwitch!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var city: String?
     let weather = WeatherGetter()
@@ -20,23 +20,19 @@ class DetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setText()
-        favoriteSwitch.isOn = dbHelper.isSaved(city!)
+        saveButton.isEnabled = !dbHelper.isSaved(city!)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func favoriteSwitched(_ sender: Any) {
-        if favoriteSwitch.isOn {
-            dbHelper.add(city: city!)
-        } else {
-            dbHelper.delete(city: city!)
-        }
+   
+    @IBAction func pressedSave(_ sender: Any) {
+        dbHelper.add(city: city!)
+        saveButton.isEnabled = !dbHelper.isSaved(city!)
     }
-    
-    
+   
     func setText() {
         let weatherInfo = weather.getWeather(city: city!)
         let info = "\(weatherInfo.name) \n Temperature: \(weatherInfo.temp) C degrees \n Windspeed: \(weatherInfo.windSpeed) m/s \n Sun rises at: \(weatherInfo.sunUpString) \n Sun sets at: \n \(weatherInfo.sunDownString)  "

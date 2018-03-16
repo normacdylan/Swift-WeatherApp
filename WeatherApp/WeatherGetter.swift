@@ -21,8 +21,8 @@ class WeatherGetter {
     }
     
     struct Sys: Codable {
-        let type: Int
-        let id: Int
+        let type: Int?
+        let id: Int?
         let message: Double
         let country: String
         let sunrise: Double
@@ -36,8 +36,8 @@ class WeatherGetter {
         let main: [String : Double]
         let wind: [String : Double]
         let clouds: [String : Double]
-   //     let rain: [String : Double]
-   //     let snow: [String : Double]
+        let rain: [String : Double]?
+        let snow: [String : Double]?
         let dt: Date
         let sys: Sys
         let id: Int
@@ -102,6 +102,29 @@ class WeatherGetter {
             return "The URL was bad"
         }
         return nil
+    }
+    
+    func getDataAsync(city: String) {
+        if let url = URL(string: "\(weatherURL)?APPID=\(key)&q=\(city)") {
+            let request = URLRequest(url: url)
+            
+            let task = URLSession.shared.dataTask(with: request) {
+                (data: Data?, response: URLResponse?, error: Error?) in
+                
+                if let unwrappedData = data {
+                    let decoder = JSONDecoder()
+                    do {
+                        let decodedInstance = try decoder.decode(WeatherData.self, from: unwrappedData)
+                     //   return decodedInstance
+                    } catch {
+                        
+                    }
+                } else {
+                    
+                }
+            }
+            task.resume()
+        }
     }
     
     func getWeather(city: String) -> WeatherData {

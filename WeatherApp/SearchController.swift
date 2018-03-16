@@ -18,13 +18,11 @@ class SearchController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        viewButton.isHidden = !weather.foundCity(searchBar.text!)
-        resultLabel.text = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        viewButton.isHidden = !weather.foundCity(searchBar.text!)
         resultLabel.text = ""
+        viewButton.isHidden = !weather.foundCity(searchBar.text!)
     }
     
     override func didReceiveMemoryWarning() {

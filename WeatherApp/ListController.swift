@@ -17,7 +17,7 @@ class ListController: UITableViewController {
         super.viewDidLoad()
         cities = dbHelper.getSavedData()
         
-        
+        navigationItem.leftBarButtonItem = editButtonItem
       //  cities = ["Paris","London","Oslo"]
 
         // Uncomment the following line to preserve selection between presentations

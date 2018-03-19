@@ -12,6 +12,7 @@ class DetailController: UIViewController {
     
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var nameLabel: UILabel!
     
     var city: String?
     let weather = WeatherGetter()
@@ -35,7 +36,8 @@ class DetailController: UIViewController {
    
     func setText() {
         let weatherInfo = weather.getWeather(city: city!)
-        let info = "\(weatherInfo.name) \n Temperature: \(weatherInfo.temp) C degrees \n Windspeed: \(weatherInfo.windSpeed) m/s \n Sun rises at: \(weatherInfo.sunUpString) \n Sun sets at: \n \(weatherInfo.sunDownString)  "
+        nameLabel.text = weatherInfo.name
+        let info = "Temperature: \(weatherInfo.tempString) C degrees \nWindspeed: \(weatherInfo.windSpeed) m/s \nSun rises at: \(weatherInfo.sunUpString) \nSun sets at: \(weatherInfo.sunDownString)"
         infoLabel.text = info
     }
     

@@ -11,6 +11,7 @@ import UIKit
 class ListController: UITableViewController {
     
     let dbHelper = DBHelper()
+    let weatherGetter = WeatherGetter()
     var cities: [String] = []
     
     override func viewDidLoad() {
@@ -48,9 +49,10 @@ class ListController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
-
-        cell.cityLabel?.text = cities[indexPath.row]
-    //    cell.weatherImage =
+        
+        let weather = weatherGetter.getWeather(city: cities[indexPath.row])
+        cell.cityLabel?.text = weather.name
+        cell.tempLabel?.text = "\(weather.tempString) C degrees"
         return cell
     }
     

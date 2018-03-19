@@ -48,6 +48,10 @@ class WeatherGetter {
             return main["temp"]! - 273.15
         }
         
+        var tempString: String {
+            return String(format: "%.2f", temp)
+        }
+        
         var cloudiness: Double {
             return clouds["all"]!
         }
@@ -91,7 +95,9 @@ class WeatherGetter {
     
     //Gör om till data istället för string?
     func getWeatherString(city: String) -> String? {
-        if let url = URL(string: "\(weatherURL)?APPID=\(key)&q=\(city)") {
+        let urlString = "\(weatherURL)?APPID=\(key)&q=\(city)"
+        if let safeUrl = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+            let url = URL(string: safeUrl) {
             do {
                 let data = try String(contentsOf: url)
                 return data

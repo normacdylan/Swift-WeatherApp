@@ -11,6 +11,7 @@ import UIKit
 class CustomCell: UITableViewCell {
     
     @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
     
     

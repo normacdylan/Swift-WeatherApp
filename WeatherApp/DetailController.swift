@@ -35,10 +35,15 @@ class DetailController: UIViewController {
     }
    
     func setText() {
-        let weatherInfo = weather.getWeather(city: city!)
-        nameLabel.text = weatherInfo.name
-        let info = "Temperature: \(weatherInfo.tempString) C degrees \nWindspeed: \(weatherInfo.windSpeed) m/s \nSun rises at: \(weatherInfo.sunUpString) \nSun sets at: \(weatherInfo.sunDownString)"
-        infoLabel.text = info
+        var weatherInfo: WeatherData?
+        weather.getDataAsync(city: city!) {
+            (decodedInstance) in weatherInfo = decodedInstance
+            if let info = weatherInfo {
+                self.nameLabel.text = info.name
+                let info = "Temperature: \(info.tempString) C degrees \nWindspeed: \(info.windSpeed) m/s \nSun rises at: \(info.sunUpString) \nSun sets at: \(info.sunDownString)"
+                self.infoLabel.text = info
+            }
+        } 
     }
     
 

@@ -17,6 +17,7 @@ class DetailController: UIViewController {
     var city: String?
     let weather = WeatherGetter()
     let dbHelper = DBHelper()
+    var weatherInfo: WeatherData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +36,13 @@ class DetailController: UIViewController {
     }
    
     func setText() {
-        var weatherInfo: WeatherData?
         weather.getDataAsync(city: city!) {
-            (decodedInstance) in weatherInfo = decodedInstance
-            if let info = weatherInfo {
+            (decodedInstance) in self.weatherInfo = decodedInstance
+            if let info = self.weatherInfo {
                 self.nameLabel.text = info.name
                 let info = "Temperature: \(info.tempString) C degrees \nWindspeed: \(info.windSpeed) m/s \nSun rises at: \(info.sunUpString) \nSun sets at: \(info.sunDownString)"
                 self.infoLabel.text = info
             }
-        } 
+        }  
     }
-    
-
 }

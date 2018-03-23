@@ -80,7 +80,7 @@ struct WeatherData: Codable {
     
 }
 
-
+// http://api.openweathermap.org/data/2.5/find?q=london&units=metric&appid=
 class WeatherGetter {
     
     private let weatherURL = "https://api.openweathermap.org/data/2.5/weather"
@@ -111,7 +111,7 @@ class WeatherGetter {
         return nil
     }
     
-    func getDataAsync(city: String, completed: @escaping (_ : WeatherData?) -> ()) {
+    func getDataAsync(city: String, completed: @escaping (WeatherData?) -> ()) {
         if let url = URL(string: "\(weatherURL)?APPID=\(key)&q=\(city)") {
             let request = URLRequest(url: url)
    

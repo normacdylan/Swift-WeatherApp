@@ -19,6 +19,7 @@
 		0F01129A205AACDE00235641 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F011299205AACDE00235641 /* SearchController.swift */; };
 		0F01129C205AAFD000235641 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F01129B205AAFD000235641 /* DBHelper.swift */; };
 		0F01129E205AC82800235641 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F01129D205AC82800235641 /* DetailController.swift */; };
+		0F0113582064FF3300235641 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0113572064FF3300235641 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		0F011299205AACDE00235641 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		0F01129B205AAFD000235641 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		0F01129D205AC82800235641 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
+		0F0113572064FF3300235641 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				0F011299205AACDE00235641 /* SearchController.swift */,
 				0F01129B205AAFD000235641 /* DBHelper.swift */,
 				0F01129D205AC82800235641 /* DetailController.swift */,
+				0F0113572064FF3300235641 /* SearchViewController.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			files = (
 				0F01129A205AACDE00235641 /* SearchController.swift in Sources */,
 				0F01129E205AC82800235641 /* DetailController.swift in Sources */,
+				0F0113582064FF3300235641 /* SearchViewController.swift in Sources */,
 				0F01129420568A9400235641 /* WeatherGetter.swift in Sources */,
 				0F01129C205AAFD000235641 /* DBHelper.swift in Sources */,
 				0F011298205AA94000235641 /* CustomCell.swift in Sources */,

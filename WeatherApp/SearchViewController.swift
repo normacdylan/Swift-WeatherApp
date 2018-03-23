@@ -1,26 +1,55 @@
 //
-//  ListController.swift
+//  SearchViewController.swift
 //  WeatherApp
 //
-//  Created by August Posner on 2018-03-02.
+//  Created by August Posner on 2018-03-23.
 //  Copyright © 2018 August Posner. All rights reserved.
 //
 
 import UIKit
 
-class ListController: UITableViewController {
+class SearchViewController: UITableViewController, UISearchResultsUpdating {
     
+    var searchController : UISearchController!
+    var searchResult: [WeatherData] = []
+    var cities: [WeatherData] = []
     let dbHelper = DBHelper()
-    let weatherGetter = WeatherGetter()
-    var cities: [String] = []
-    var weather: WeatherData?
+    
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text?.lowercased() {
+            searchResult = cities.filter({ $0.name.lowercased().contains(text) })
+        } else {
+            searchResult = []
+        }
+        tableView.reloadData()
+    }
+    
+    var shouldUseSearchResult : Bool {
+        if let text = searchController.searchBar.text {
+            if text.isEmpty {
+                return false
+            } else {
+                return searchController.isActive
+            }
+        } else {
+            return false
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cities = dbHelper.load()
         
-        navigationItem.leftBarButtonItem = editButtonItem
-
+        title = "Cities"
+        
+        definesPresentationContext = true
+        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        
+        navigationItem.searchController = searchController
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -28,9 +57,9 @@ class ListController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        cities = dbHelper.load()
-        tableView.reloadData()
+    override func viewDidAppear(_ animated: Bool) {
+        searchController.searchBar.becomeFirstResponder()
+     //   cities = dbHelper.load()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,27 +67,36 @@ class ListController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - Table view data source
+
     override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cities.count
+        // #warning Incomplete implementation, return the number of rows
+        if shouldUseSearchResult {
+            return searchResult.count
+        } else {
+            return cities.count
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
+
+        let array : [WeatherData]
         
-        weatherGetter.getDataAsync(city: cities[indexPath.row]) {
-            (decodedInstance) in self.weather = decodedInstance
-            
-            if let weather = self.weather {
-                cell.cityLabel?.text = weather.name
-                cell.tempLabel?.text = "\(weather.tempString) C degrees"
-            }
+        if shouldUseSearchResult {
+            array = searchResult
+        } else {
+            array = cities
         }
         
+        cell.textLabel?.text = array.map{$0.name}[indexPath.row]
+
         return cell
     }
     
@@ -71,19 +109,17 @@ class ListController: UITableViewController {
     }
     */
 
-    
+    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let city = cities[indexPath.row]
-            cities.remove(at: indexPath.row)
-            dbHelper.delete(city: city)
+            // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
+    */
 
     /*
     // Override to support rearranging the table view.
@@ -100,14 +136,14 @@ class ListController: UITableViewController {
     }
     */
 
-    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let indexPath = tableView.indexPathForSelectedRow {
-            let selectedRow = indexPath.row
-            let destination = segue.destination as! DetailController
-            destination.city = cities[selectedRow]
-        }
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
-    
+    */
 
 }

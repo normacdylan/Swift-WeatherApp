@@ -77,6 +77,34 @@
             </objects>
             <point key="canvasLocation" x="2061.5999999999999" y="-245.12743628185908"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="LBm-Qg-pcj">
+            <objects>
+                <tableViewController id="StO-SN-K9W" customClass="SearchViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="P7U-rt-y2s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" id="8O9-bp-bcf">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8O9-bp-bcf" id="ORe-tj-Nkw">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="StO-SN-K9W" id="wU5-Le-cBy"/>
+                            <outlet property="delegate" destination="StO-SN-K9W" id="Uqt-DO-HnA"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YSZ-Xx-mGS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2832" y="-249"/>
+        </scene>
         <!--Details-->
         <scene sceneID="z5J-Mo-Jnz">
             <objects>
@@ -85,8 +113,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HeG-3w-Cnn">
-                                <rect key="frame" x="16" y="102" width="343" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HeG-3w-Cnn">
+                                <rect key="frame" x="16" y="102" width="163" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HeG-3w-Cnn" secondAttribute="height" multiplier="6:1" constant="163" id="0Uh-Lw-o1p"/>
                                 </constraints>
@@ -95,7 +123,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFd-wd-B6s">
-                                <rect key="frame" x="16" y="140" width="343" height="227"/>
+                                <rect key="frame" x="16" y="110" width="163" height="107"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LFd-wd-B6s" secondAttribute="height" multiplier="3:2" constant="2.5" id="0k0-DV-Qcs"/>
                                 </constraints>
@@ -181,7 +209,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Favorites" id="b7W-Ha-rEo">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="NCj-qU-33b"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ToQ-oa-KG1">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="ToQ-oa-KG1">
                             <connections>
                                 <segue destination="0qQ-tM-nw3" kind="show" identifier="searchSegue" id="NG6-yy-xSb"/>
                             </connections>

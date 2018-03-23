@@ -12,7 +12,7 @@ class DBHelper {
     private let key = "savedData"
     private let userDefaults = UserDefaults.standard
     
-    func getSavedData() -> [String] {
+    func load() -> [String] {
         let savedData = userDefaults.object(forKey: key)
         return savedData is [String] ? savedData as! [String] : []
     }
@@ -23,19 +23,19 @@ class DBHelper {
     
     func add(city: String) {
         if !isSaved(city) {
-            var savedData = getSavedData()
+            var savedData = load()
             savedData.append(city)
             save(savedData)
         }
     }
     
     func delete(city: String) {
-        let newData = getSavedData().filter{$0 != city}
+        let newData = load().filter{$0 != city}
         save(newData)
     }
     
     func isSaved(_ city: String) -> Bool {
-        return getSavedData().contains(city)
+        return load().contains(city)
     }
     
 }

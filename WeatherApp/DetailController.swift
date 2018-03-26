@@ -39,7 +39,8 @@ class DetailController: UIViewController {
         weather.getWeatherAsync(cityID: cityID!) {
             (decodedInstance) in self.weatherInfo = decodedInstance
             if let info = self.weatherInfo {
-                self.nameLabel.text = info.name! + " " + info.country
+                self.title = info.name!
+                self.nameLabel.text = info.name! + ", " + info.country
                 let info = "Temperature: \(info.tempString) C degrees \nWindspeed: \(info.windSpeed) m/s \nSun rises at: \(info.sunUpString) \nSun sets at: \(info.sunDownString)"
                 self.infoLabel.text = info
             }

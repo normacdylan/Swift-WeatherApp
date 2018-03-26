@@ -57,7 +57,7 @@ struct WeatherData: Codable {
     }
     
     var tempString: String {
-        return String(format: "%.2f", temp)
+        return String(format: "%.1f", temp)
     }
     
     var cloudiness: Double {

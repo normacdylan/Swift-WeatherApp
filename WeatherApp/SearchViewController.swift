@@ -36,7 +36,11 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        searchController.searchBar.becomeFirstResponder()
+        super.viewDidAppear(animated)
+        searchController.isActive = true
+        DispatchQueue.main.async { [unowned self] in
+            self.searchController.searchBar.becomeFirstResponder()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,13 +62,17 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text {
-            weather.getAllCitiesAsync(city: text) {
-                (decodedInstance) in self.searchResult = decodedInstance.list
-                self.tableView.reloadData()
+            if text.count < 3 {
+                searchResult = []
+                tableView.reloadData()
+            } else {
+                weather.getAllCitiesAsync(city: text) {
+                    (decodedInstance) in self.searchResult = decodedInstance.list
+                    self.tableView.reloadData()
+                }
             }
         } else {
             searchResult = []
-            tableView.reloadData()
         }
     }
     
@@ -91,7 +99,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
             array = []
         }
         
-        cell.textLabel?.text = array.map{$0.name! + " " + $0.country}[indexPath.row]
+        cell.textLabel?.text = array.map{$0.name! + ", " + $0.country}[indexPath.row]
         
         return cell
     }

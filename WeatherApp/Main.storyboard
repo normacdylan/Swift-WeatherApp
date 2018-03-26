@@ -46,7 +46,7 @@
         <!--Details-->
         <scene sceneID="z5J-Mo-Jnz">
             <objects>
-                <viewController title="Details" id="lRc-YH-O9R" customClass="DetailController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lRc-YH-O9R" customClass="DetailController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iIc-8X-Gw5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

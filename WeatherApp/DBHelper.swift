@@ -12,30 +12,30 @@ class DBHelper {
     private let key = "savedData"
     private let userDefaults = UserDefaults.standard
     
-    func load() -> [String] {
+    func load() -> [Int] {
         let savedData = userDefaults.object(forKey: key)
-        return savedData is [String] ? savedData as! [String] : []
+        return savedData is [Int] ? savedData as! [Int] : []
     }
     
-    private func save(_ data: [String]) {
+    private func save(_ data: [Int]) {
         userDefaults.set(data, forKey: key)
     }
     
-    func add(city: String) {
-        if !isSaved(city) {
+    func add(cityID: Int) {
+        if !isSaved(cityID) {
             var savedData = load()
-            savedData.append(city)
+            savedData.append(cityID)
             save(savedData)
         }
     }
     
-    func delete(city: String) {
-        let newData = load().filter{$0 != city}
+    func delete(cityID: Int) {
+        let newData = load().filter{$0 != cityID}
         save(newData)
     }
     
-    func isSaved(_ city: String) -> Bool {
-        return load().contains(city)
+    func isSaved(_ cityID: Int) -> Bool {
+        return load().contains(cityID)
     }
     
 }

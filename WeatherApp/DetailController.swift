@@ -14,7 +14,7 @@ class DetailController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var nameLabel: UILabel!
     
-    var city: String?
+    var cityID: Int?
     let weather = WeatherGetter()
     let dbHelper = DBHelper()
     var weatherInfo: WeatherData?
@@ -22,7 +22,7 @@ class DetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setText()
-        saveButton.isEnabled = !dbHelper.isSaved(city!)
+        saveButton.isEnabled = !dbHelper.isSaved(cityID!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,18 +31,18 @@ class DetailController: UIViewController {
     }
    
     @IBAction func pressedSave(_ sender: Any) {
-        dbHelper.add(city: city!)
-        saveButton.isEnabled = !dbHelper.isSaved(city!)
+        dbHelper.add(cityID: cityID!)
+        saveButton.isEnabled = !dbHelper.isSaved(cityID!)
     }
    
     func setText() {
-        weather.getDataAsync(city: city!) {
+        weather.getWeatherAsync(cityID: cityID!) {
             (decodedInstance) in self.weatherInfo = decodedInstance
             if let info = self.weatherInfo {
-                self.nameLabel.text = info.name
+                self.nameLabel.text = info.name! + " " + info.country
                 let info = "Temperature: \(info.tempString) C degrees \nWindspeed: \(info.windSpeed) m/s \nSun rises at: \(info.sunUpString) \nSun sets at: \(info.sunDownString)"
                 self.infoLabel.text = info
             }
-        }  
+        }
     }
 }

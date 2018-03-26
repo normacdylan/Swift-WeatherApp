@@ -12,12 +12,12 @@ class ListController: UITableViewController {
     
     let dbHelper = DBHelper()
     let weatherGetter = WeatherGetter()
-    var cities: [String] = []
+    var cityIDs: [Int] = []
     var weather: WeatherData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cities = dbHelper.load()
+        cityIDs = dbHelper.load()
         
         navigationItem.leftBarButtonItem = editButtonItem
 
@@ -29,7 +29,7 @@ class ListController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        cities = dbHelper.load()
+        cityIDs = dbHelper.load()
         tableView.reloadData()
     }
 
@@ -43,14 +43,14 @@ class ListController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cities.count
+        return cityIDs.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
         
-        weatherGetter.getDataAsync(city: cities[indexPath.row]) {
+        weatherGetter.getWeatherAsync(cityID: cityIDs[indexPath.row]) {
             (decodedInstance) in self.weather = decodedInstance
             
             if let weather = self.weather {
@@ -75,9 +75,9 @@ class ListController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let city = cities[indexPath.row]
-            cities.remove(at: indexPath.row)
-            dbHelper.delete(city: city)
+            let cityID = cityIDs[indexPath.row]
+            cityIDs.remove(at: indexPath.row)
+            dbHelper.delete(cityID: cityID)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -105,7 +105,7 @@ class ListController: UITableViewController {
         if let indexPath = tableView.indexPathForSelectedRow {
             let selectedRow = indexPath.row
             let destination = segue.destination as! DetailController
-            destination.city = cities[selectedRow]
+            destination.cityID = cityIDs[selectedRow]
         }
     }
     

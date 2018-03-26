@@ -12,35 +12,13 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     
     var searchController : UISearchController!
     var searchResult: [WeatherData] = []
-    var cities: [WeatherData] = []
     let dbHelper = DBHelper()
-    
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        if let text = searchController.searchBar.text?.lowercased() {
-            searchResult = cities.filter({ $0.name.lowercased().contains(text) })
-        } else {
-            searchResult = []
-        }
-        tableView.reloadData()
-    }
-    
-    var shouldUseSearchResult : Bool {
-        if let text = searchController.searchBar.text {
-            if text.isEmpty {
-                return false
-            } else {
-                return searchController.isActive
-            }
-        } else {
-            return false
-        }
-    }
+    let weather = WeatherGetter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Cities"
+        title = "Search"
         
         definesPresentationContext = true
         
@@ -59,7 +37,6 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     
     override func viewDidAppear(_ animated: Bool) {
         searchController.searchBar.becomeFirstResponder()
-     //   cities = dbHelper.load()
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,22 +44,41 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         if shouldUseSearchResult {
             return searchResult.count
         } else {
-            return cities.count
+            return 0
         }
     }
 
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text {
+            weather.getAllCitiesAsync(city: text) {
+                (decodedInstance) in self.searchResult = decodedInstance.list
+                self.tableView.reloadData()
+            }
+        } else {
+            searchResult = []
+            tableView.reloadData()
+        }
+    }
+    
+    var shouldUseSearchResult : Bool {
+        if let text = searchController.searchBar.text {
+            if text.isEmpty {
+                return false
+            } else {
+                return searchController.isActive
+            }
+        } else {
+            return false
+        }
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
@@ -92,11 +88,11 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         if shouldUseSearchResult {
             array = searchResult
         } else {
-            array = cities
+            array = []
         }
         
-        cell.textLabel?.text = array.map{$0.name}[indexPath.row]
-
+        cell.textLabel?.text = array.map{$0.name! + " " + $0.country}[indexPath.row]
+        
         return cell
     }
     
@@ -136,14 +132,14 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let indexPath = tableView.indexPathForSelectedRow {
+            let selectedRow = indexPath.row
+            let destination = segue.destination as! DetailController
+            destination.cityID = searchResult[selectedRow].id!
+        }
     }
-    */
+    
 
 }

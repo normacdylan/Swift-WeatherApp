@@ -90,9 +90,14 @@ struct WeatherData: Codable {
         return dateFormatter.string(from: sunDown)
     }
     
-    
+    var iconImageData: Data? {
+        let url = URL(string:"http://openweathermap.org/img/w/\(weather![0].icon!).png")
+        if let data = try? Data(contentsOf: url!) {
+            return data
+        }
+        return nil
+    }
 }
-
 
 class WeatherGetter {
     

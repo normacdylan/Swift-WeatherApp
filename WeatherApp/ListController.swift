@@ -46,6 +46,9 @@ class ListController: UITableViewController {
         return cityIDs.count
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
@@ -54,8 +57,9 @@ class ListController: UITableViewController {
             (decodedInstance) in self.weather = decodedInstance
             
             if let weather = self.weather {
-                cell.cityLabel?.text = weather.name
+                cell.cityLabel?.text = weather.name! + ", " + weather.country
                 cell.tempLabel?.text = "\(weather.tempString) C degrees"
+                cell.weatherImage?.image = UIImage(data: weather.iconImageData!)
             }
         }
         

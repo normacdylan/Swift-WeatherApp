@@ -59,6 +59,10 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
             return 0
         }
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
 
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text {

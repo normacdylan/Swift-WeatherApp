@@ -114,19 +114,23 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2SH-xs-IKX">
-                                            <rect key="frame" x="16" y="11" width="134" height="26"/>
+                                            <rect key="frame" x="16" y="0.0" width="180" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2G-Gp-iDm">
-                                            <rect key="frame" x="210" y="11" width="149" height="26"/>
+                                            <rect key="frame" x="16" y="36" width="149" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BQd-sq-8CX">
+                                            <rect key="frame" x="255" y="12" width="61" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration">
@@ -135,6 +139,7 @@
                                 <connections>
                                     <outlet property="cityLabel" destination="2SH-xs-IKX" id="Zi4-4h-OoF"/>
                                     <outlet property="tempLabel" destination="K2G-Gp-iDm" id="Gj6-Jo-FAI"/>
+                                    <outlet property="weatherImage" destination="BQd-sq-8CX" id="iDF-mo-YbD"/>
                                     <segue destination="lRc-YH-O9R" kind="show" identifier="detailSegue" id="wq5-BP-IVC"/>
                                 </connections>
                             </tableViewCell>
@@ -179,6 +184,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pHu-T4-rwO"/>
+        <segue reference="wq5-BP-IVC"/>
     </inferredMetricsTieBreakers>
 </document>

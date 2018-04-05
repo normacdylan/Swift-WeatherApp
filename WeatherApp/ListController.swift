@@ -15,6 +15,8 @@ class ListController: UITableViewController {
     var cityIDs: [Int] = []
     var weather: WeatherData?
     
+    @IBOutlet weak var graphButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cityIDs = dbHelper.load()
@@ -37,7 +39,7 @@ class ListController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -88,30 +90,18 @@ class ListController: UITableViewController {
         }    
     }
     
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = tableView.indexPathForSelectedRow {
             let selectedRow = indexPath.row
-            let destination = segue.destination as! DetailController
-            destination.cityID = cityIDs[selectedRow]
+            
+            if segue.identifier == "detailSegue" {
+                let destination = segue.destination as! DetailController
+                destination.cityID = cityIDs[selectedRow]
+            }
+        }
+        if segue.identifier == "graphSegue" {
+            let destination = segue.destination as! GraphController
+            destination.cityIDs = cityIDs  //TODO!
         }
     }
-    
-
 }

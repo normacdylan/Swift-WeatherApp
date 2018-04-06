@@ -15,13 +15,15 @@ class GraphController: UIViewController, GKBarGraphDataSource {
     var cityIDs: [Int] = []
     let weather = WeatherGetter()
     var weatherList: [WeatherData] = []
+    let screenSize = UIScreen.main.bounds
+    let barColors = [UIColor.red, UIColor.green, UIColor.blue, UIColor.yellow]
     
     func numberOfBars() -> Int {
         return weatherList.count
     }
     
     func valueForBar(at index: Int) -> NSNumber! {
-        return weatherList[index].temp as NSNumber
+        return weatherList[index].temp + 15 as NSNumber
     }
     
     func titleForBar(at index: Int) -> String! {
@@ -29,11 +31,18 @@ class GraphController: UIViewController, GKBarGraphDataSource {
     }
     
     func colorForBar(at index: Int) -> UIColor! {
-        return [UIColor.red, UIColor.green, UIColor.blue][index % 2]
+        return barColors[index % barColors.count]
+    }
+    
+    func setBarSizes() {
+        let marginSums = diagram.marginBar * CGFloat(cityIDs.count)
+        diagram.barWidth = (screenSize.width - marginSums) / CGFloat(cityIDs.count)
+        diagram.barHeight = screenSize.height * 0.5
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBarSizes()
         fillWeatherList()
         diagram.dataSource = self
     }

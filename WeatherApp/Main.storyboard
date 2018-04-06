@@ -51,8 +51,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HeG-3w-Cnn">
-                                <rect key="frame" x="16" y="102" width="163" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HeG-3w-Cnn">
+                                <rect key="frame" x="16" y="64" width="343" height="87"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HeG-3w-Cnn" secondAttribute="height" multiplier="6:1" constant="163" id="0Uh-Lw-o1p"/>
                                 </constraints>
@@ -60,8 +60,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFd-wd-B6s">
-                                <rect key="frame" x="16" y="110" width="163" height="107"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFd-wd-B6s">
+                                <rect key="frame" x="16" y="211" width="343" height="244"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LFd-wd-B6s" secondAttribute="height" multiplier="3:2" constant="2.5" id="0k0-DV-Qcs"/>
                                 </constraints>
@@ -69,6 +69,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Advice" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEB-kc-XDD">
+                                <rect key="frame" x="0.0" y="485" width="204" height="138"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boy" translatesAutoresizingMaskIntoConstraints="NO" id="8FE-Qx-txC">
+                                <rect key="frame" x="212" y="485" width="163" height="138"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ru5-P7-2AE">
+                                <rect key="frame" x="0.0" y="330" width="145" height="125"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -88,6 +103,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="adviceLabel" destination="PEB-kc-XDD" id="xaa-A8-3Vu"/>
+                        <outlet property="iconImage" destination="ru5-P7-2AE" id="BG4-hs-IYX"/>
                         <outlet property="infoLabel" destination="LFd-wd-B6s" id="F1b-El-Q9B"/>
                         <outlet property="nameLabel" destination="HeG-3w-Cnn" id="85Q-m3-gdg"/>
                         <outlet property="saveButton" destination="y7n-Vf-24t" id="0FB-0h-uhU"/>
@@ -95,18 +112,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qG-BN-U7H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2062" y="164"/>
+            <point key="canvasLocation" x="2061.5999999999999" y="163.26836581709148"/>
         </scene>
-        <!--Graph Controller-->
+        <!--Compare-->
         <scene sceneID="SVk-qM-bmP">
             <objects>
-                <viewController id="xMg-80-WPf" customClass="GraphController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Compare" id="xMg-80-WPf" customClass="GraphController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PSx-it-uE7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6b7-nN-AVs" customClass="GKBarGraph">
-                                <rect key="frame" x="16" y="64" width="343" height="383"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -224,6 +241,7 @@
     </scenes>
     <resources>
         <image name="bars-graphic" width="32" height="32"/>
+        <image name="boy" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wq5-BP-IVC"/>

@@ -64,6 +64,10 @@ struct WeatherData: Codable {
         return clouds!["all"]!
     }
     
+    var weatherID: Int {
+        return weather![0].id!
+    }
+    
     var windSpeed: Double {
         return wind!["speed"]!
     }
@@ -98,3 +102,5 @@ struct WeatherData: Codable {
         return nil
     }
 }
+
+

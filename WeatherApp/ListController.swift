@@ -21,6 +21,8 @@ class ListController: UITableViewController {
         super.viewDidLoad()
         cityIDs = dbHelper.load()
         
+        // tableView.allowsMultipleSelection = true
+        
         navigationItem.leftBarButtonItem = editButtonItem
 
         // Uncomment the following line to preserve selection between presentations
@@ -77,8 +79,6 @@ class ListController: UITableViewController {
     }
     */
 
-    
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let cityID = cityIDs[indexPath.row]

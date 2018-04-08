@@ -6,11 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Helvetica.ttc">
+            <string>Helvetica</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Search View Controller-->
         <scene sceneID="LBm-Qg-pcj">
@@ -51,48 +54,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HeG-3w-Cnn">
-                                <rect key="frame" x="16" y="64" width="343" height="87"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="HeG-3w-Cnn" secondAttribute="height" multiplier="6:1" constant="163" id="0Uh-Lw-o1p"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFd-wd-B6s">
-                                <rect key="frame" x="16" y="211" width="343" height="244"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="LFd-wd-B6s" secondAttribute="height" multiplier="3:2" constant="2.5" id="0k0-DV-Qcs"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFd-wd-B6s">
+                                <rect key="frame" x="16" y="64" width="343" height="258"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Advice" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEB-kc-XDD">
-                                <rect key="frame" x="0.0" y="485" width="204" height="138"/>
+                                <rect key="frame" x="16" y="485" width="188" height="138"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ru5-P7-2AE">
+                                <rect key="frame" x="16" y="330" width="145" height="125"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boy" translatesAutoresizingMaskIntoConstraints="NO" id="8FE-Qx-txC">
                                 <rect key="frame" x="212" y="485" width="163" height="138"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ru5-P7-2AE">
-                                <rect key="frame" x="0.0" y="330" width="145" height="125"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="HeG-3w-Cnn" firstAttribute="trailing" secondItem="LFd-wd-B6s" secondAttribute="trailing" id="NM2-0v-r9i"/>
-                            <constraint firstItem="LFd-wd-B6s" firstAttribute="top" secondItem="HeG-3w-Cnn" secondAttribute="bottom" constant="8" symbolic="YES" id="UhE-ku-aE5"/>
-                            <constraint firstItem="HeG-3w-Cnn" firstAttribute="top" secondItem="946-Us-JD8" secondAttribute="top" constant="38" id="WNP-hg-LKq"/>
-                            <constraint firstItem="HeG-3w-Cnn" firstAttribute="leading" secondItem="iIc-8X-Gw5" secondAttribute="leadingMargin" id="mRo-NX-CYu"/>
-                            <constraint firstItem="HeG-3w-Cnn" firstAttribute="leading" secondItem="LFd-wd-B6s" secondAttribute="leading" id="yLx-jI-A84"/>
-                        </constraints>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="946-Us-JD8"/>
                     </view>
                     <navigationItem key="navigationItem" title="Details" id="bUP-2K-OzJ">
@@ -106,18 +93,17 @@
                         <outlet property="adviceLabel" destination="PEB-kc-XDD" id="xaa-A8-3Vu"/>
                         <outlet property="iconImage" destination="ru5-P7-2AE" id="BG4-hs-IYX"/>
                         <outlet property="infoLabel" destination="LFd-wd-B6s" id="F1b-El-Q9B"/>
-                        <outlet property="nameLabel" destination="HeG-3w-Cnn" id="85Q-m3-gdg"/>
                         <outlet property="saveButton" destination="y7n-Vf-24t" id="0FB-0h-uhU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qG-BN-U7H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2061.5999999999999" y="163.26836581709148"/>
+            <point key="canvasLocation" x="2062" y="131"/>
         </scene>
-        <!--Compare-->
+        <!--Compare Temperatures-->
         <scene sceneID="SVk-qM-bmP">
             <objects>
-                <viewController title="Compare" id="xMg-80-WPf" customClass="GraphController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Compare Temperatures" id="xMg-80-WPf" customClass="GraphController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PSx-it-uE7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,21 +142,21 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2SH-xs-IKX">
-                                            <rect key="frame" x="16" y="0.0" width="180" height="36"/>
+                                            <rect key="frame" x="97" y="13" width="180" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2G-Gp-iDm">
-                                            <rect key="frame" x="16" y="36" width="149" height="26"/>
+                                            <rect key="frame" x="97" y="44" width="149" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BQd-sq-8CX">
-                                            <rect key="frame" x="173" y="0.0" width="47" height="52"/>
+                                            <rect key="frame" x="230" y="5" width="47" height="52"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
@@ -182,7 +168,6 @@
                                     <outlet property="cityLabel" destination="2SH-xs-IKX" id="Zi4-4h-OoF"/>
                                     <outlet property="tempLabel" destination="K2G-Gp-iDm" id="Gj6-Jo-FAI"/>
                                     <outlet property="weatherImage" destination="BQd-sq-8CX" id="iDF-mo-YbD"/>
-                                    <segue destination="lRc-YH-O9R" kind="show" identifier="detailSegue" id="wq5-BP-IVC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -210,6 +195,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="graphButton" destination="Eo4-fo-0ri" id="Osw-gv-rWx"/>
+                        <segue destination="lRc-YH-O9R" kind="show" identifier="detailSegue" id="ihx-WN-Urw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jrD-ya-iEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -244,6 +230,6 @@
         <image name="boy" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wq5-BP-IVC"/>
+        <segue reference="ihx-WN-Urw"/>
     </inferredMetricsTieBreakers>
 </document>

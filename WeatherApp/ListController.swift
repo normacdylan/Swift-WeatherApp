@@ -14,27 +14,22 @@ class ListController: UITableViewController {
     let weatherGetter = WeatherGetter()
     var cityIDs: [Int] = []
     var weather: WeatherData?
+    var selectedCityIDs: [Int] = []
     
     @IBOutlet weak var graphButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cityIDs = dbHelper.load()
-        
-        // tableView.allowsMultipleSelection = true
-        
+        tableView.allowsMultipleSelection = true
+        tableView.allowsMultipleSelectionDuringEditing = true
         navigationItem.leftBarButtonItem = editButtonItem
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
         cityIDs = dbHelper.load()
         tableView.reloadData()
+        graphButton.isEnabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,15 +65,24 @@ class ListController: UITableViewController {
         return cell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !tableView.isEditing {
+            performSegue(withIdentifier: "detailSegue", sender: nil)
+        } else {
+            if let selected = tableView.indexPathsForSelectedRows {
+                selectedCityIDs = selected.map{cityIDs[$0.row]}
+                graphButton.isEnabled = selected.count > 1
+            }
+        }
     }
-    */
-
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let selected = tableView.indexPathsForSelectedRows {
+            selectedCityIDs = selected.map{cityIDs[$0.row]}
+            graphButton.isEnabled = selected.count > 1
+        }
+    }
+   
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let cityID = cityIDs[indexPath.row]
@@ -90,6 +94,8 @@ class ListController: UITableViewController {
         }    
     }
     
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = tableView.indexPathForSelectedRow {
             let selectedRow = indexPath.row
@@ -99,9 +105,10 @@ class ListController: UITableViewController {
                 destination.cityID = cityIDs[selectedRow]
             }
         }
+        
         if segue.identifier == "graphSegue" {
             let destination = segue.destination as! GraphController
-            destination.cityIDs = cityIDs  //TODO!
+            destination.cityIDs = selectedCityIDs
         }
     }
 }
